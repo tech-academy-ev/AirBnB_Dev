@@ -11,3 +11,4 @@ First rough draft of exercise ideas:
 5. Machine learning part (predicting prices from reviews, ISMA type of tasks ..)
 
 Had to split some data files due to file size constraints in github.
+Link to kaggle: https://www.kaggle.com/brittabettendorf/berlin-airbnb-data/
