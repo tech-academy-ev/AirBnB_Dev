@@ -1,0 +1,203 @@
+---
+title: |
+  | Data Science mit R
+  | Airbnb Projekt-Leitfaden
+author: "TechAcademy e.V."
+date: "Wintersemester 2019/20"
+output:
+  pdf_document:
+    toc: no
+fontsize: 11pt
+geometry: top=1in, bottom=1.5in, left=1in, right=1in, a4paper
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\includegraphics[width=12cm]{plots/TA_Logo.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+- \usepackage{fancyhdr}
+- \usepackage{setspace}
+- \usepackage{chngcntr}
+- \onehalfspacing
+- \fancyfoot{}
+- \fancyfoot[R]{\thepage}
+fontfamily: mathpazo
+editor_options:
+  chunk_output_type: console
+---
+
+\clearpage
+
+\addtolength{\headheight}{17.82275pt}
+\pagestyle{fancyplain}
+ \fancyfoot[L]{Airbnb Projekt-Leitfaden | \copyright\ 2019, TechAcademy e.V.}
+  
+\rhead{\includegraphics[height=0.5cm]{plots/TA_logo.png}}
+\renewcommand{\headrulewidth}{0.25pt}
+\renewcommand{\footrulewidth}{0.25pt}
+\renewcommand{\contentsname}{Inhalt}
+\tableofcontents
+\clearpage
+
+
+# Wofür ist dieses Dokument gedacht?
+Herzlich willkommen in dem Projekt-Leitfaden für dein TechAcademy *Data Science mit R* Projekt! 
+
+Diese Kurzbeschreibung des Projektes soll dir erste Anhaltspunkte dafür geben, wie du zu einem Ergebnis kommst. Dieses Dokument ist jedoch bewusst keine Schritt-für-Schritt Anleitung, wie du das Projekt durchführen sollst. Uns ist es wichtig, dass du dich in deinem Team selbst mit der Aufgabenstellung beschäftigst und eigene Wege findest, wie du zu einem Ergebnis kommst.  
+
+Da es aber besonders am Anfang nicht ganz offensichtlich sein kann, welche Schritte du durchlaufen sollst, geben wir dir mit diesem Dokument eine kleine Hilfestellung. Es wird sehr oft vorkommen, dass du nicht weiter weißt. Das ist ganz normal und gehört zu dem Lernprozess dazu. Du findest in unserem Handbuch Links zu sehr nützlichen Websites, wo Deine Frage vermutlich schon einmal beantwortet wurde. Falls auch googlen dich nicht weiter bringt, stehen dir natürlich die Mentoren per Slack und bei unseren Coding Meetups persönlich zur Verfügung.
+
+# Bevor es los geht
+## Um was geht das Projekt?
+
+Ihr kennt es hier in Frankfurt: In der ganzen Stadt stehen Leihfarräder herum und warten darauf, ausgeliehen zu werden. Dieses Angebot ist nicht nur praktisch, sondern generiert auch große Mengen an Daten. Wir werden in diesem Semester einen detaillierten Datensatz der Firma Capital Bikeshare aus Washington, DC auswerten. Dabei ist die Analyse in zwei große Abschnitte aufgeteilt, die du nacheinander bearbeiten wirst.
+
+## Was ist das Ziel?
+**Explorative Datenanalyse – Lerne den Datensatz kennen**  
+
+Als ersten Schritt werden wir den Datansatz *deskriptiv* kennen lernen. Das heißt, wir nähern uns dem Ziel, indem wir die Daten *beschreiben*. Bei Data Science Projekten ist es sehr wichtig, sich zu aller erst mit dem Datansatz vertraut zu machen. Welche Variablen sind in dem Datensatz enthalten und wie stehen sie im Verhältnis zueinander? Diese Fragen kann man sich sehr gut mit Grafiken beantworten.  
+Wir stellen dir dafür eine Reihe von strukturierten Aufgaben, die du nacheinander bearbeiten wirst. Anfänger, die bisher noch keine oder sehr wenige Statistik-Kenntnisse haben, können nach diesen Aufgaben aufhören. Damit sind für Anfänger die Mindestvoraussetzungen erfüllt. Jedoch wird es gerade danach spannend. Versuche dich also auf jeden Fall trotzdem daran, wenn du noch etwas dazu lernen willst.
+
+Für diesen Abschnitt ist es sinnvoll, die ersten DataCamp Kurse in deinem Curriculum absolviert zu haben. Insbesondere folgende Kurse helfen dir weiter bei der Explorativen Datenanalyse:
+
+\begin{itemize}
+\item Introduction to R  \newline
+(https://www.datacamp.com/courses/free-introduction-to-r)
+\item Importing Data in R  \newline
+(https://www.datacamp.com/courses/importing-data-in-r-part-1)
+\item Working with the Rstudio IDE (Part 1)  \newline
+(https://www.datacamp.com/courses/working-with-the-rstudio-ide-part-1)
+\item Data Visualization with ggplot2 (Part 1)  \newline
+(https://www.datacamp.com/courses/data-visualization-with-ggplot2-1)
+\item Data Visualization with ggplot2 (Part 2) (besonders für die Google Maps-Aufgabe)  \newline
+(https://www.datacamp.com/courses/data-visualization-with-ggplot2-2)
+\item Exploratory Data Analysis  \newline
+(https://www.datacamp.com/courses/exploratory-data-analysis)
+\end{itemize}
+
+**Nachfrage-Prognose – Wende statistische Methoden an**  
+
+Dieser Part ist vornehmlich für etwas fortgeschrittenere Teilnehmer vorgesehen. Wenn du jedoch als Anfänger gut durch den ersten Abschnitt gekommen bist, empfehlen wir dir ausdrücklich, auch diesen Teil zu bearbeiten. Statistische Modelle sind ein enorm wichtiger Teil des Themenbereiches Data Science.  
+Nachdem wir den Datensatz kennen gelernt haben, können wir in diesem Schritt ein Modell entwickeln, mit dem wir die Nachfrage nach Leihfahrrädern vorhersagen können. Cool, oder? Ziel ist es, deine Vorhersage letztendlich bei Kaggle einzureichen. Kaggle ist eine Plattform von Google, die regelmäßig "Competitions" startet, bei denen es darum geht etwas besonders gut vorherzusagen. Du bekommst einen Trainings-Datensatz mit dem du deine Modelle trainierst. Danach wendest du dein Modell auf einen seperaten Test-Datensatz an. Kaggle überprüft dann die Genauigkeit deiner Vorhersagen und rankt deine Lösung danach.  
+
+Für diesen Abschnitt empfehlen wir dir folgende DataCamp Kurse. Beachte jedoch, dass es noch viele weitere Kurse gibt, die dir eine fortgeschrittenere Lösungsmöglichkeit beibringen.
+
+\begin{itemize}
+\item Correlation and Regression \newline
+(https://www.datacamp.com/courses/correlation-and-regression)
+\item Multiple and Logistic Regression \newline
+(https://www.datacamp.com/courses/multiple-and-logistic-regression)
+\item Supervised Learning in R: Regression \newline  
+(https://www.datacamp.com/courses/supervised-learning-in-r-regression)
+\item Unsupervised Learning in R \newline
+(https://www.datacamp.com/courses/unsupervised-learning-in-r)
+\item Machine Learning Toolbox \newline
+(https://www.datacamp.com/courses/machine-learning-toolbox)
+\end{itemize}
+
+Doch alles der Reihe nach. Beginnen wir mit der Exporativen Datenanalyse.
+
+# Explorative Datenanalyse – Lerne den Datensatz kennen
+
+Wir haben in deinem RStudio.cloud Workspace bereits ein sogenanntes Assignment (Template Bike Sharing Demand) hochgeladen. Wenn du jetzt ein neues Projekt innerhalb des Workspaces "Class of '19 | TechAcademy | Data Science with R" erstellst, öffnet sich dein eigener Workspace, in dem wir schon ein paar Vorbereitungen für die erfolgreiche Bearbeitung getroffen haben. So sind einerseit schon die benötigten Datensätze in deinem Working Directory abgelegt. Außerdem haben wir eine RMarkdown Datei erstellt, in der du strukturiert deine Aufgaben coden und letztendlich berichten kannst. Öffne also als ersten Schritt die Datei "PDF_Bike_Share_Demand.Rmd".
+
+## 1. Plot des Ausleihverhaltens über die Zeit (train data set)
+
+
+```{r demandplot seven day, echo=FALSE, out.width = '100%'}
+
+```
+
+
+### 4.2 Koordinaten-Einträge mit Google Maps visualisieren (Bonus-Aufgabe)
+Dank deiner "merge-Skills" haben wir nun einen schönen Datensatz mit den Start- und End-Koordinaten zu jeder einzelnen Fahrt mit den Leihfahrrädern. Dieser Teil soll dir zeigen, was du nun mit Koordinaten-Daten anfangen kannst. Du kannst mit R über Googles API Karten von Google Maps in R importieren. Darauf kannst du dann Koordinaten einzeichnen und damit deinen Location-Datensatz visualisieren. Die Konfiguration der API ist etwas mühsam und man muss eine Kreditkarte bei Google hinterlegen (diese wird jedoch nicht belastet – der Service ist kostenlos). Deshalb musst du diese Aufgabe nicht bearbeiten – jedoch bekommst du damit sehr spannende Visualisierungen. Das ist ein tolles Beispiel, wie vielseitig und flexibel R einsetzbar ist.  
+
+
+Herzlichen Glückwunsch – Du hast jetzt dank vieler Grafiken ein gutes Grundverständnis des Bike Sharing-Geschäfts. Damit hast du den ersten Teil des Projektes erfolgreich abgeschlossen! Wenn du in der Anfänger-Gruppe bist, sind deine Mindestvoraussetzungen hiermit erfüllt. Wir empfehlen dir aber trotzdem dringend, dich auch mit dem folgenden Teil auseinanderzusetzen. Denn wir entwickeln jetzt Methoden, um die Zukunft vorauszusagen! Klingt spannend, oder?
+
+\clearpage
+
+# Nachfrage-Prognose – Wende statistische Methoden an
+
+Im vorherigen Teil hast du ein Gefühl für den Datensatz bekommen. Du weißt jetzt, welche Variablen enthalten sind und kennst ein paar charakteristische Eigenschaften des Datensatzes. Noch haben wir den Datensatz aber nur visualisiert. In diesem Abschnitt gehen wir einen Schritt weiter und wenden statistische Methoden an, um die Nachfrage nach Leihfahrrädern möglichst präzise vorherzusagen.  
+
+Um dein Modell am Schluss vergleichen zu können, nutzen wir die Online-Plattform Kaggle.
+
+Erstelle dir einen kostenlosen Account bei Kaggle und gehe dann zu dem Bike Sharing Demand Projekt unter folgendem Link:  
+
+\begin{center} https://www.kaggle.com/c/bike-sharing-demand \end{center}  
+
+Du erhältst unter \textit{Overview} eine detaillierte Einführung in das Projekt. Lese dir die Beschreibungen aufmerksam durch. Unter dem Reiter \textit{Kernels} findest du einige (sehr fortgeschrittene) Lösungen zu dem Projekt. Wenn du einmal nicht weiter kommen solltest, kannst du dir Inspirationen davon holen. Aber bitte copy und paste nicht einfach eine Lösung davon. Das bringt dich persönlich nicht weiter.  
+
+
+## 1. Untersuche den Zusammenhang zwischen den Variablen näher
+
+Wie stehen einzelne Variablen miteinander in Verbindung? Sprich inwiefern korrelieren die Variablen des Datensatzes miteinander? Das herauszufinden ist enorm wichtig für die Entscheidung, welches Modell du später anwenden kannst.  
+Ein guter Anfang ist es, eine Korrelationsmatrix zu erstellen. Ein Teil dafür ist die Funktion $cor$ aus dem $base$ package.
+
+```{r, results = 'hide', output = FALSE, message = FALSE}
+
+```
+
+
+Oder du visualisierst die Korrelationen in einer Heat-Map, wie nachfolgend dargestellt. Dafür ist zum Beispiel das package $ggcorr$ sehr gut geeignet.  
+  
+  
+```{r CorrPlot, echo=FALSE, out.width = '100%'}
+
+```
+
+Aus diesem Graph kannst du schon sehr viel herauslesen. Scheinbar variiert die Nachfrage nach Fahrrädern sehr deutlich mit der Tageszeit sowie der Temperatur.
+
+## 2. Teste verschiedene Modelle und deren Qualität
+
+Jetzt kannst du dich mit deinen Statistik-Kenntnissen austoben: Du brauchst jetzt ein Verfahren, wie du die Nachfrage nach Leihrädern zu einer bestimmten Zeit vorhersagen kannst.  
+Eine erste sehr einfache Herangehensweise wäre den Durchschnitt der Nachfrage als erste Vorhersage zu verwenden. Ziemlich sicher ist das jedoch nicht die beste Vorhersage.  
+
+Schon einmal was von einer linearen Regression gehört? Das wäre ein deutlich besserer Ansatz. Jetzt kannst du deine Statistik-Skills ausspielen. Stelle doch einmal ein Modell mit der abhängigen Variable $count$ auf. Welche unabhängigen Variablen könnten die Nachfrage nach Leihrädern erklären? Hat das Wetter etwas mit der Nachfrage zu tun? Leihen mehr Personen Fahrräder unter der Woche oder am Wochenende aus?  
+
+Starte mit einem ganz einfachen Modell mit nur einer erklärenden Variable. Zum Beispiel so:
+
+\begin{center} $count = \beta_0 + \beta_1 temp + \epsilon$ \end{center}
+
+In R kannst du eine einfache lineare Regression mit der Funktion $lm()$ implementieren. Die Ergebnisse davon gibst du dann mit der $summary()$ Funktion aus.
+
+```{r, results = 'hide', output = FALSE, message = FALSE}
+
+```
+
+
+Hat die Temperatur einen statistisch signifikanten Einfluss auf die Nachfrage nach Leihfahrrädern? Vermutlich ja.  
+Wenn wir jedoch bei diesem sehr vereinfachten Modell bleiben, begehen wir einen typischen Fehler: Den sogenannten Omitted Variable Bias (OVB). Grob vereinfacht gesprochen vernachlässigen wir (im Statistik-Jargon: kontrollieren nicht für) Variablen, die einen signifikanten Einfluss auf die abhängige Variable haben. Man könnte vermuten, dass die Tageszeit auch eine große Rolle bei der Nachfrage nach Fahrrädern spielt. Wenn wir diese also nicht mit aufnehmen, ist die Schätzung des Effektes der Temperatur verzerrt und damit schlecht zu gebrauchen. In diesem Fall ist das vorerst kein großes Problem für uns, da wir nicht an kausalen Effekten, sondern aussließlich an einer möglichst guten Vorhersage interessiert sind. Deinem Statistik-Prof würden bei so einem Modell ziemlich sicher die Haare zu Berge stehen. Nichtsdestotrotz wird dieses Modell mit nur einer einzigen erklärenden Variable die Nachfrage nicht gut vorhersagen.  
+
+Eine Lösungsmöglichkeit ist, die vernachlässigten Variablen einfach mit in das Modell aufzunehmen – wie praktisch, dass diese auch schon in dem Datensatz enthalten sind. Stellen wir also ein umfangreicheres Modell auf, das die Tageszeit mit aufnimmt:
+
+\begin{center} $count = \beta_0 + \beta_1 temp + \beta_2 hour + \epsilon$ \end{center}  
+
+Hier siehst du das Ergebnis der beiden Modelle. Welches ist besser geeignet? Macht es Sinn, die Variable $hour$ in dieser Form mit in das lineare Regressionsmodell aufzuführen?  
+
+
+Jetzt bist du dran: Probiere mehrere Kombinationen aus und vergleiche die Ergebnisse deiner Modelle. Hinterfrage dabei immer kritisch, ob es Sinn macht, eine jeweilige Variable in das Modell mit aufzunehmen und was das für die Qualität deines Modells bedeutet.  
+
+Hier sind deiner Kreativität keine Grenzen gesetzt. Du musst nicht bei einer einfachen linearen Regression bleiben. Gibt es nicht-lineare Zusammenhänge? Wie geht man mit unrealistischen Vorhersagen um? Warum nicht einmal ein künstliches Neuronales Netz mit dem Regressionsmodell vergleichen? Inspiriere dich gerne bei den Kernels zu dieser Challenge auf Kaggle!
+
+## 3. Von Training zu Testen – Treffe Vorhersagen
+
+Jetzt hast du dein Modell ausgewählt und mit dem Trainings-Datensatz *trainiert*. Doch wie gut geht das Modell mit Daten um, die es noch nicht gesehen hat? Das ist ein sehr wichtiger Test für die Qualität deines Modells.  
+
+Hat dein Modell nur die vorhandenen Muster im Trainings-Datensatz "auswendig" gelernt? Dann wären die Zusammenhänge aus dem Trainings-Datensatz nicht übertragbar auf den Test-Datensatz. Beim sogenannten overfitting hat das Modell zu nah am Trainings-Datensatz gelernt und liefert deshalb schlechte Vorhersagen bei unbekannten Daten – in deinem Test-Datensatz.  
+Auf der andern Seite gibt es auch das Problem underfitting: Dein Modell hat die tatsächlichen Zusammenhänge der Daten nicht gelernt und sagt deshalb in dem Test-Datensatz schlecht voraus. Es gilt also die goldene Mitte zwischen den beiden Problemen zu finden.  
+
+Jetzt wird die Unterscheidung zwischen Trainings- und Testdatensatz wichtig. Wir nutzen $train$, um ein Modell zu *trainieren* und $test$, um die Qualität unseres Modells letztendlich zu *testen*. Wir haben bereits die benötigten Daten in deinem Working Directory hochgeladen. 
+
+Lade nun zusätzlich zu dem Datensatz $train$, den du bereits vorher verwendet hast, den Datensatz $test$:
+
+```{r, output = FALSE}
+
+```
+
+
+# Noch Fragen?
+
+Du kommst nicht weiter? Oder willst dein Modell noch weiter verbessern, weißt aber nicht genau wie? Oder dir fällt gerade nicht ein, wie man etwas bestimmtes im Code umsetzt? Schaue dir noch einmal unser Handbuch an. Dort findest du hilfreiche Hinweise, wie du in diesem Fall weiter verfahren und wo du nach einer Lösung für deine Fragestellung suchen kannst.
+
+
+# Beschreibung der Variablen in den Datensätzen
